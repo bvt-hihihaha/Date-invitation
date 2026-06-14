@@ -1,192 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Date Invitation ❤️</title>
+<title>Thiệp Mời Đi Chơi 💖</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="floating-hearts"></div>
-
-<div class="container">
+<div class="card">
 
     <!-- PAGE 1 -->
 
-    <section id="page1" class="card active">
+    <div id="page1" class="page active">
 
         <div class="emoji">💌</div>
 
-        <h1>Will you go on a date with me?</h1>
+        <h1>Bạn có muốn đi chơi với mình không?</h1>
 
         <p>
-            I promise I'll try not to be awkward...
-            but no guarantees 🥺
+            Mình đã chuẩn bị lời mời này khá lâu rồi đó 🥺
+            <br>
+            Chỉ mong được cùng bạn ăn một bữa ngon,
+            đi dạo một chút và có thật nhiều tiếng cười thôi 💕
         </p>
 
         <div class="buttons">
 
             <button id="yesBtn" class="yes-btn">
-                YES ❤️
+                Có ❤️
             </button>
 
             <button id="noBtn" class="no-btn">
-                NO 😭
+                Không 😭
             </button>
 
         </div>
 
-    </section>
+    </div>
 
     <!-- PAGE 2 -->
 
-    <section id="page2" class="card">
+    <div id="page2" class="page">
 
         <div class="emoji">😳</div>
 
-        <h1>Wait... you actually said yes??</h1>
+        <h1>Khoan đã... bạn thật sự đồng ý hả?</h1>
 
         <p>
-            I was so ready for you to say no.
-            I didn't even prepare a backup plan.
+            Mình đã chuẩn bị tinh thần cho việc bạn bấm "Không" rồi đó...
+            <br>
+            Thật sự không nghĩ tới bước này luôn 😆
         </p>
 
-        <button class="main-btn" onclick="nextPage(3)">
-            Okay Okay 💕
+        <button class="main-btn" onclick="showPage(3)">
+            Rồi rồi, tiếp tục nè 💕
         </button>
 
-    </section>
+    </div>
 
     <!-- PAGE 3 -->
 
-    <section id="page3" class="card">
+    <div id="page3" class="page">
 
         <div class="emoji">📅</div>
 
-        <h1>So... when are you free?</h1>
+        <h1>Vậy khi nào bạn rảnh nè?</h1>
 
         <div class="field">
 
-            <label>Pick a day</label>
+            <label>Chọn ngày</label>
 
-            <input
-                type="date"
-                id="dateInput"
-            >
+            <input type="date" id="dateInput">
 
         </div>
 
         <div class="field">
 
-            <label>Pick a time</label>
+            <label>Chọn giờ</label>
 
             <select id="timeInput"></select>
 
         </div>
 
         <button class="main-btn" onclick="saveDate()">
-            Set The Date 💌
+            Chốt lịch hẹn 💌
         </button>
 
-    </section>
+    </div>
 
     <!-- PAGE 4 -->
 
-    <section id="page4" class="card">
+    <div id="page4" class="page">
 
         <div class="emoji">🍽️</div>
 
-        <h1>What are we feeling?</h1>
+        <h1>Hôm đó mình ăn gì đây?</h1>
 
-        <p>Pick your vibe ✨</p>
+        <p>Chọn món bạn thích nha ✨</p>
 
         <div class="food-grid">
 
-            <button class="food-btn" onclick="chooseFood('Pizza 🍕')">
-                🍕 Pizza
-            </button>
-
-            <button class="food-btn" onclick="chooseFood('Pasta 🍝')">
-                🍝 Pasta
-            </button>
-
-            <button class="food-btn" onclick="chooseFood('Sushi 🍣')">
-                🍣 Sushi
-            </button>
-
-            <button class="food-btn" onclick="chooseFood('Ramen 🍜')">
-                🍜 Ramen
-            </button>
-
-            <button class="food-btn" onclick="chooseFood('Burger 🍔')">
-                🍔 Burger
-            </button>
-
-            <button class="food-btn" onclick="chooseFood('Tacos 🌮')">
-                🌮 Tacos
-            </button>
+            <button class="food-btn" onclick="chooseFood('Pizza 🍕')">🍕 Pizza</button>
+            <button class="food-btn" onclick="chooseFood('Mì Ý 🍝')">🍝 Mì Ý</button>
+            <button class="food-btn" onclick="chooseFood('Sushi 🍣')">🍣 Sushi</button>
+            <button class="food-btn" onclick="chooseFood('Ramen 🍜')">🍜 Ramen</button>
+            <button class="food-btn" onclick="chooseFood('Burger 🍔')">🍔 Burger</button>
+            <button class="food-btn" onclick="chooseFood('BBQ 🥩')">🥩 BBQ</button>
 
         </div>
 
-    </section>
+    </div>
 
     <!-- PAGE 5 -->
 
-    <section id="page5" class="card">
+    <div id="page5" class="page">
 
         <div class="emoji">💖</div>
 
-        <h1>Glad you didn't say no.</h1>
+        <h1>May quá, bạn không bấm "Không" 🥰</h1>
 
-        <h2>
-            Be ready by 6,
-            I'm coming to get you 🚗💕
-        </h2>
+        <p>
+            Vậy là lịch hẹn của chúng ta đã được xác nhận rồi nè ✨
+        </p>
 
         <div class="summary">
 
-            <p>
-                📅 <strong>Date:</strong>
-                <span id="summaryDate"></span>
-            </p>
+            <p>📅 <b>Ngày hẹn:</b> <span id="summaryDate"></span></p>
 
-            <p>
-                ⏰ <strong>Time:</strong>
-                <span id="summaryTime"></span>
-            </p>
+            <p>⏰ <b>Giờ hẹn:</b> <span id="summaryTime"></span></p>
 
-            <p>
-                🍽️ <strong>Vibe:</strong>
-                <span id="summaryFood"></span>
-            </p>
+            <p>🍽️ <b>Món ăn:</b> <span id="summaryFood"></span></p>
 
         </div>
 
         <p class="message">
 
-            Thank you for saying yes ❤️
+            Cảm ơn bạn đã đồng ý ❤️
 
             <br><br>
 
-            I can't wait to spend time with you,
-            laugh with you,
-            create memories with you
-            and make this a date worth remembering.
+            Mình thật sự rất mong chờ ngày hôm đó.
+
+            <br>
+
+            Hy vọng chúng ta sẽ có thật nhiều câu chuyện,
+            thật nhiều tiếng cười
+            và những kỷ niệm thật đẹp cùng nhau.
 
             <br><br>
 
-            See you soon ✨
+            Nhớ chuẩn bị thật xinh nha 💕
+            <br>
+            Mình sẽ đến đón bạn ✨
 
         </p>
 
-    </section>
+    </div>
 
 </div>
 
