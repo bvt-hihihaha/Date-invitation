@@ -6,55 +6,45 @@
 
 body{
     font-family:'Quicksand',sans-serif;
-
     min-height:100vh;
-
+    background:linear-gradient(
+        135deg,
+        #ffd6e8,
+        #ffe6f1,
+        #fff0f6
+    );
     display:flex;
     justify-content:center;
     align-items:center;
-
-    background:
-    linear-gradient(
-        135deg,
-        #ffd6e7,
-        #ffc0cb,
-        #ffb6d5
-    );
-
     overflow:hidden;
-}
-
-.container{
-    width:90%;
-    max-width:650px;
+    padding:20px;
 }
 
 .card{
-
-    display:none;
-
+    width:100%;
+    max-width:650px;
     background:white;
-
-    padding:40px;
-
-    border-radius:25px;
-
+    padding:35px;
+    border-radius:30px;
     text-align:center;
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,.15);
-
-    animation:fade .5s ease;
+    box-shadow:0 15px 40px rgba(255,105,180,.2);
+    position:relative;
+    z-index:10;
 }
 
-.active{
+.page{
+    display:none;
+}
+
+.page.active{
     display:block;
+    animation:fade .5s ease;
 }
 
 @keyframes fade{
     from{
         opacity:0;
-        transform:translateY(25px);
+        transform:translateY(20px);
     }
     to{
         opacity:1;
@@ -72,87 +62,53 @@ h1{
     margin-bottom:15px;
 }
 
-h2{
-    margin-top:10px;
-    color:#ff6699;
-}
-
 p{
-    color:#555;
+    color:#666;
     line-height:1.8;
 }
 
 .buttons{
-
     margin-top:30px;
-
     display:flex;
-
     justify-content:center;
-
     gap:20px;
-
-    position:relative;
-
     min-height:100px;
 }
 
 .yes-btn,
-.no-btn{
-
-    padding:15px 35px;
-
+.no-btn,
+.main-btn{
     border:none;
-
-    border-radius:50px;
-
-    font-size:18px;
-
-    font-weight:700;
-
     cursor:pointer;
-
+    border-radius:50px;
     transition:.3s;
+    font-weight:700;
 }
 
 .yes-btn{
     background:#ff4f8b;
     color:white;
+    padding:15px 35px;
 }
 
 .no-btn{
-
     background:white;
-
     border:2px solid #ff4f8b;
-
     color:#ff4f8b;
-
+    padding:15px 35px;
     position:relative;
 }
 
 .main-btn{
-
-    margin-top:25px;
-
-    padding:15px 35px;
-
-    border:none;
-
-    border-radius:50px;
-
     background:#ff4f8b;
-
     color:white;
-
-    font-size:17px;
-
-    cursor:pointer;
+    padding:15px 35px;
+    margin-top:25px;
 }
 
 .field{
-    margin-top:20px;
     text-align:left;
+    margin-top:20px;
 }
 
 .field label{
@@ -163,88 +119,90 @@ p{
 
 .field input,
 .field select{
-
     width:100%;
-
     padding:12px;
-
     border-radius:12px;
-
-    border:2px solid #ffd2e3;
-
-    font-size:16px;
+    border:2px solid #ffd6e8;
 }
 
 .food-grid{
-
     margin-top:25px;
-
     display:grid;
-
     grid-template-columns:repeat(2,1fr);
-
     gap:15px;
 }
 
 .food-btn{
-
-    padding:18px;
-
     border:none;
-
+    padding:18px;
     border-radius:15px;
-
-    background:#ffe7f0;
-
+    background:#ffe7f1;
     cursor:pointer;
-
     transition:.3s;
-
-    font-size:17px;
 }
 
 .food-btn:hover{
-
     transform:scale(1.05);
-
-    background:#ffd3e5;
 }
 
 .summary{
-
-    margin-top:25px;
-
-    background:#fff2f7;
-
+    margin-top:20px;
+    background:#fff3f8;
     padding:20px;
-
     border-radius:15px;
+    text-align:left;
+}
+
+.summary p{
+    margin-bottom:10px;
 }
 
 .message{
     margin-top:20px;
 }
 
-.floating-heart{
-
+.heart{
     position:fixed;
-
     bottom:-50px;
-
-    animation:floatUp 4s linear forwards;
-
     pointer-events:none;
+    animation:float 5s linear forwards;
 }
 
-@keyframes floatUp{
-
+@keyframes float{
     from{
         transform:translateY(0);
         opacity:1;
     }
-
     to{
         transform:translateY(-120vh);
         opacity:0;
+    }
+}
+
+@media(max-width:768px){
+
+    .card{
+        padding:25px;
+    }
+
+    h1{
+        font-size:24px;
+    }
+
+    .emoji{
+        font-size:55px;
+    }
+
+    .food-grid{
+        grid-template-columns:1fr;
+    }
+
+    .buttons{
+        gap:10px;
+    }
+
+    .yes-btn,
+    .no-btn{
+        padding:14px 22px;
     }
 }
