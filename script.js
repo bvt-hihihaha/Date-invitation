@@ -1,38 +1,32 @@
-let selectedDate = "";
-let selectedTime = "";
-let selectedFood = "";
+let selectedDate="";
+let selectedTime="";
+let selectedFood="";
 
-const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
+let scale=1;
 
-let yesScale = 1;
+const yesBtn=document.getElementById("yesBtn");
+const noBtn=document.getElementById("noBtn");
 
-/* =======================
-   NO BUTTON RUN AWAY
-======================= */
+/* NO BUTTON */
 
-noBtn.addEventListener("mouseenter", () => {
+noBtn.addEventListener("mouseenter",()=>{
 
-    const x =
-        Math.random()*200 - 100;
+    const x=Math.random()*120-60;
+    const y=Math.random()*60-30;
 
-    const y =
-        Math.random()*80 - 40;
+    noBtn.style.transform=
+    `translate(${x}px,${y}px)`;
 
-    noBtn.style.transform =
-        `translate(${x}px,${y}px)`;
+    scale+=0.1;
 
-    yesScale += 0.15;
+    yesBtn.style.transform=
+    `scale(${scale})`;
 
-    yesBtn.style.transform =
-        `scale(${yesScale})`;
 });
 
-/* =======================
-   YES CLICK
-======================= */
+/* YES BUTTON */
 
-yesBtn.addEventListener("click", () => {
+yesBtn.addEventListener("click",()=>{
 
     for(let i=0;i<25;i++){
 
@@ -41,127 +35,105 @@ yesBtn.addEventListener("click", () => {
         },i*80);
     }
 
-    nextPage(2);
+    showPage(2);
+
 });
 
-/* =======================
-   PAGE
-======================= */
+/* CHANGE PAGE */
 
-function nextPage(page){
+function showPage(page){
 
     document
-    .querySelectorAll(".card")
-    .forEach(card=>{
-        card.classList.remove("active");
-    });
+    .querySelectorAll(".page")
+    .forEach(p=>p.classList.remove("active"));
 
     document
-    .getElementById(`page${page}`)
+    .getElementById("page"+page)
     .classList.add("active");
 }
 
-/* =======================
-   TIME DROPDOWN
-======================= */
+/* TIME DROPDOWN */
 
-const timeSelect =
+const timeInput=
 document.getElementById("timeInput");
 
-for(let h=7; h<=20; h++){
+for(let h=7;h<=20;h++){
 
     ["00","30"].forEach(min=>{
 
-        if(h===20 && min==="30")
-            return;
+        if(h===20 && min==="30") return;
 
-        const option =
+        const option=
         document.createElement("option");
 
-        option.value =
+        option.value=
         `${String(h).padStart(2,"0")}:${min}`;
 
-        option.textContent =
+        option.textContent=
         `${String(h).padStart(2,"0")}:${min}`;
 
-        timeSelect.appendChild(option);
+        timeInput.appendChild(option);
+
     });
 }
 
-/* =======================
-   SAVE DATE
-======================= */
+/* SAVE DATE */
 
 function saveDate(){
 
-    selectedDate =
-        document.getElementById("dateInput").value;
+    selectedDate=
+    document.getElementById("dateInput").value;
 
-    selectedTime =
-        document.getElementById("timeInput").value;
+    selectedTime=
+    document.getElementById("timeInput").value;
 
     if(!selectedDate){
 
-        alert(
-            "Please choose a date ❤️"
-        );
-
+        alert("Chọn ngày trước nha ❤️");
         return;
     }
 
-    nextPage(4);
+    showPage(4);
 }
 
-/* =======================
-   FOOD
-======================= */
+/* FOOD */
 
 function chooseFood(food){
 
-    selectedFood = food;
+    selectedFood=food;
 
-    document.getElementById(
-        "summaryDate"
-    ).innerText = selectedDate;
+    document.getElementById("summaryDate").innerText=
+    selectedDate;
 
-    document.getElementById(
-        "summaryTime"
-    ).innerText = selectedTime;
+    document.getElementById("summaryTime").innerText=
+    selectedTime;
 
-    document.getElementById(
-        "summaryFood"
-    ).innerText = selectedFood;
+    document.getElementById("summaryFood").innerText=
+    selectedFood;
 
-    nextPage(5);
+    showPage(5);
 }
 
-/* =======================
-   HEARTS
-======================= */
+/* HEART EFFECT */
 
 function createHeart(){
 
-    const heart =
+    const heart=
     document.createElement("div");
 
-    heart.classList.add(
-        "floating-heart"
-    );
+    heart.className="heart";
 
-    heart.innerHTML = "💖";
+    heart.innerHTML="💖";
 
-    heart.style.left =
-        Math.random()*100 + "vw";
+    heart.style.left=
+    Math.random()*100+"vw";
 
-    heart.style.fontSize =
-        (20 + Math.random()*20)
-        + "px";
+    heart.style.fontSize=
+    (20+Math.random()*25)+"px";
 
-    document.body.appendChild(
-        heart
-    );
+    document.body.appendChild(heart);
 
     setTimeout(()=>{
         heart.remove();
-    },4000);
+    },5000);
 }
